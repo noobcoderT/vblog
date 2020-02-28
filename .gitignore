@@ -1,0 +1,3 @@
+log-*.txt
+go.sum
+vendor
