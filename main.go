@@ -33,6 +33,7 @@ func main() {
             logging.Info("Listen: %s\n", err)
         }
     }()
+    logging.Info("Server started!")
 
     quit := make(chan os.Signal)
     signal.Notify(quit, os.Interrupt)
@@ -46,5 +47,5 @@ func main() {
         logging.Fatal("Server Shutdown:", err)
     }
 
-    logging.Info("Server exiting")
+    logging.Info("Server exited!")
 }

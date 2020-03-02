@@ -4,6 +4,7 @@ import (
     "log"
     "time"
     "github.com/go-ini/ini"
+    "github.com/sirupsen/logrus"
 )
 
 var (
@@ -15,6 +16,9 @@ var (
     WriteTimeout time.Duration
     PageSize int
     JwtSecret string
+    LogFilePath = "runtime/logs/"
+    LogFileName = "runlog"
+    LogLevel = logrus.InfoLevel
 )
 
 func init() {
@@ -30,6 +34,9 @@ func init() {
 
 func LoadBase() {
     RunMode = Cfg.Section("").Key("RUN_MODE").MustString("debug")
+    if RunMode == "debug" {
+        LogLevel = logrus.DebugLevel
+    }
 }
 
 func LoadServer() {
